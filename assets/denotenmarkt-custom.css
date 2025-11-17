@@ -356,26 +356,46 @@ button[type="submit"] {
   border-radius: 0 !important;
   overflow: hidden;
   box-shadow: var(--shadow-deep);
+  position: relative;
 }
 
 #homepage_slider .slides li {
   position: relative;
+  overflow: hidden;
 }
 
 #homepage_slider .slides li img {
   width: 100%;
   height: auto;
   object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+#homepage_slider .slides li:hover img {
+  transform: scale(1.05);
 }
 
 .flex-caption {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: 3rem 2.5rem;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lift);
   margin: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.flex-caption::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary-400), var(--color-accent-400));
 }
 
 .flex-caption .headline {
@@ -383,6 +403,8 @@ button[type="submit"] {
   font-weight: 700;
   margin-bottom: 1rem;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
 }
 
 .flex-caption .subtitle {
@@ -390,6 +412,14 @@ button[type="submit"] {
   margin-bottom: 1.5rem;
   color: var(--color-earth-700);
   line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.flex-caption .action_button {
+  position: relative;
+  z-index: 1;
+  margin-top: 0.5rem;
 }
 
 /* ========================================
@@ -503,20 +533,42 @@ a:hover {
 .footer,
 #footer {
   background: linear-gradient(180deg, var(--color-earth-100), var(--color-earth-200)) !important;
-  border-top: 1px solid var(--color-earth-300);
-  padding: 3rem 0 1.5rem;
+  border-top: 3px solid var(--color-primary-300);
+  padding: 4rem 0 2rem;
   margin-top: 4rem;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-primary-400), transparent);
 }
 
 .footer a,
 #footer a {
   color: var(--color-earth-700);
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
+  font-weight: 500;
 }
 
 .footer a:hover,
 #footer a:hover {
   color: var(--color-primary-600);
+  transform: translateX(2px);
+}
+
+.footer h4,
+#footer h4 {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
 }
 
 /* ========================================
@@ -559,8 +611,44 @@ a:hover {
   }
 }
 
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
 .fade-in {
   animation: fadeIn 0.6s ease-out;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.6s ease-out;
+}
+
+/* Loading shimmer effect */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-earth-100) 0%,
+    var(--color-earth-50) 50%,
+    var(--color-earth-100) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
 }
 
 /* ========================================
@@ -603,6 +691,27 @@ a:hover {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
   margin: 2rem 0;
+  padding: 0;
+}
+
+.collection-title,
+.collection-header h1 {
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--color-ink);
+  text-align: center;
+  margin: 3rem 0 2rem;
+  letter-spacing: -0.02em;
+}
+
+.collection-description {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 1.125rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
 }
 
 /* ========================================
@@ -624,6 +733,23 @@ a:hover {
 .loading {
   opacity: 0.6;
   pointer-events: none;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  border: 3px solid var(--color-earth-200);
+  border-top-color: var(--color-primary-500);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+  margin: 2rem auto;
 }
 
 /* ========================================
