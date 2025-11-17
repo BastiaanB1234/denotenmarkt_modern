@@ -1,8 +1,10 @@
-/* De Notenmarkt Custom Styling - Matching Vercel Frontend */
+/* De Notenmarkt Modern Styling - Premium & Modern Design */
 
-/* Color Variables */
+/* ========================================
+   CSS VARIABLES - Modern Color Palette
+   ======================================== */
 :root {
-  /* Primary Colors - Brown */
+  /* Primary Colors - Rich Brown */
   --color-primary-50: #FFF8DC;
   --color-primary-100: #F5E6D3;
   --color-primary-200: #E6D3B7;
@@ -14,7 +16,7 @@
   --color-primary-800: #5C2E0D;
   --color-primary-900: #4D260B;
   
-  /* Accent Colors - Gold */
+  /* Accent Colors - Elegant Gold */
   --color-accent-50: #FDF6E3;
   --color-accent-100: #F9E6B3;
   --color-accent-200: #F4D03F;
@@ -40,488 +42,606 @@
   --color-ink: #2C1A00;
   --color-muted: #807461;
   
-  /* Shadows */
+  /* Modern Shadows */
   --shadow-soft: 0 2px 15px -3px rgba(139, 69, 19, 0.08), 0 10px 20px -2px rgba(139, 69, 19, 0.05);
   --shadow-warm: 0 4px 20px -2px rgba(139, 69, 19, 0.12), 0 2px 8px -2px rgba(139, 69, 19, 0.08);
   --shadow-lift: 0 8px 32px -4px rgba(139, 69, 19, 0.15), 0 4px 16px -2px rgba(139, 69, 19, 0.1);
   --shadow-glow: 0 0 20px rgba(218, 165, 32, 0.3);
+  --shadow-deep: 0 12px 40px -8px rgba(139, 69, 19, 0.2);
+  
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Border Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-full: 9999px;
 }
 
-/* Body Background - Cream with subtle pattern */
+/* ========================================
+   GLOBAL STYLES
+   ======================================== */
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--color-cream) !important;
   background-image: 
     radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(218, 165, 32, 0.02) 0%, transparent 50%),
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238B4513' fill-opacity='0.01'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    radial-gradient(circle at 80% 20%, rgba(218, 165, 32, 0.02) 0%, transparent 50%);
   color: var(--color-ink) !important;
-}
-
-/* Typography */
-body,
-.text-body {
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ========================================
+   TYPOGRAPHY - Modern & Elegant
+   ======================================== */
 h1, h2, h3, h4, h5, h6,
-.h0, .h1, .h2, .h3, .h4, .h5 {
+.h0, .h1, .h2, .h3, .h4, .h5,
+.headline {
   font-family: 'Playfair Display', serif !important;
   line-height: 1.2;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-ink);
+  letter-spacing: -0.02em;
 }
 
-/* Buttons - Rounded full with warm shadows */
+h1, .h1, .headline {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1.5rem;
+}
+
+h2, .h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1.25rem;
+}
+
+h3, .h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 1rem;
+}
+
+p, .text-body {
+  font-family: 'Inter', sans-serif !important;
+  line-height: 1.7;
+  color: var(--color-earth-700);
+}
+
+/* ========================================
+   HEADER - Modern Glassmorphism
+   ======================================== */
+#header,
+.header,
+.mm-fixed-top {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(139, 69, 19, 0.1) !important;
+  box-shadow: 0 4px 20px rgba(139, 69, 19, 0.08) !important;
+  padding: 1rem 0 !important;
+  position: sticky !important;
+  top: 0;
+  z-index: 1000;
+  transition: all var(--transition-base);
+}
+
+#header:hover {
+  box-shadow: 0 8px 30px rgba(139, 69, 19, 0.12) !important;
+}
+
+#header a,
+.header a {
+  color: var(--color-ink) !important;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+}
+
+#header a:hover,
+.header a:hover {
+  color: var(--color-primary-600) !important;
+  background: rgba(139, 69, 19, 0.05);
+}
+
+.icon-cart {
+  position: relative;
+}
+
+.cart_count {
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600)) !important;
+  color: white !important;
+  border-radius: var(--radius-full);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  min-width: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-warm);
+}
+
+/* ========================================
+   NAVIGATION - Modern Menu
+   ======================================== */
+#nav,
+.mm-menu {
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+#nav ul li a,
+.mm-menu ul li a {
+  color: var(--color-ink) !important;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  display: block;
+}
+
+#nav ul li a:hover,
+.mm-menu ul li a:hover {
+  background: rgba(139, 69, 19, 0.08);
+  color: var(--color-primary-600) !important;
+  transform: translateX(4px);
+}
+
+#nav ul li.Selected > a,
+.mm-menu ul li.Selected > a {
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600));
+  color: white !important;
+  box-shadow: var(--shadow-warm);
+}
+
+/* ========================================
+   BUTTONS - Modern Rounded with Effects
+   ======================================== */
 .button,
+.action_button,
 .shopify-challenge__button,
 .customer button,
-button.shopify-payment-button__button--unbranded {
-  border-radius: 9999px !important; /* rounded-full */
-  background-color: var(--color-primary-500) !important;
+button.shopify-payment-button__button--unbranded,
+input[type="submit"],
+button[type="submit"] {
+  border-radius: var(--radius-full) !important;
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600)) !important;
   color: white !important;
-  font-weight: 500;
-  padding: 1rem 2rem;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
   min-height: 48px;
   box-shadow: var(--shadow-warm) !important;
-  transition: all 0.3s ease;
-  border: none;
+  transition: all var(--transition-base);
+  border: none !important;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: none !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before,
+.action_button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.button:hover::before,
+.action_button:hover::before {
+  left: 100%;
 }
 
 .button:hover,
-.shopify-challenge__button:hover,
+.action_button:hover,
 .customer button:hover {
-  background-color: var(--color-primary-600) !important;
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700)) !important;
   box-shadow: var(--shadow-lift) !important;
   transform: translateY(-2px);
 }
 
+.button:active,
+.action_button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-warm) !important;
+}
+
 .button--secondary {
-  background-color: var(--color-linen) !important;
+  background: white !important;
   color: var(--color-ink) !important;
-  border: 1px solid var(--color-primary-200) !important;
+  border: 2px solid var(--color-primary-300) !important;
   box-shadow: var(--shadow-soft) !important;
 }
 
 .button--secondary:hover {
-  background-color: var(--color-primary-100) !important;
+  background: var(--color-primary-50) !important;
+  border-color: var(--color-primary-500) !important;
   box-shadow: var(--shadow-warm) !important;
 }
 
-/* Cards - Warm shadows and rounded corners */
-.card,
-.product-card-wrapper .card,
-.collection-card-wrapper .card,
-.article-card-wrapper .card {
-  background-color: white !important;
-  border-radius: 1.5rem !important; /* rounded-2xl */
-  box-shadow: var(--shadow-warm) !important;
-  border: 1px solid var(--color-primary-200) !important;
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-
-.card:hover,
-.product-card-wrapper .card:hover,
-.collection-card-wrapper .card:hover,
-.article-card-wrapper .card:hover {
-  box-shadow: var(--shadow-lift) !important;
-  transform: translateY(-2px);
-}
-
-/* Header - Backdrop blur and warm colors */
-.header,
-.header-wrapper {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-primary-200) !important;
+/* ========================================
+   PRODUCT CARDS - Modern Card Design
+   ======================================== */
+.product-item,
+.product-wrapper,
+.thumbnail,
+.product-index {
+  background: white !important;
+  border-radius: var(--radius-xl) !important;
   box-shadow: var(--shadow-soft) !important;
-}
-
-/* Links */
-a {
-  color: var(--color-primary-500);
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--color-primary-600);
-}
-
-/* Product Cards */
-.card__media,
-.product-card__media {
-  border-radius: 1.5rem 1.5rem 0 0 !important;
+  border: 1px solid rgba(139, 69, 19, 0.1) !important;
+  transition: all var(--transition-base);
   overflow: hidden;
+  position: relative;
 }
 
-.card__information,
-.product-card__information {
-  padding: 1.5rem;
+.product-item::before,
+.product-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary-400), var(--color-accent-400));
+  opacity: 0;
+  transition: opacity var(--transition-base);
 }
 
-/* Price */
-.price {
-  color: var(--color-primary-600);
+.product-item:hover,
+.product-wrapper:hover,
+.thumbnail:hover {
+  box-shadow: var(--shadow-lift) !important;
+  transform: translateY(-8px);
+  border-color: var(--color-primary-300) !important;
+}
+
+.product-item:hover::before,
+.product-wrapper:hover::before {
+  opacity: 1;
+}
+
+.product-item img,
+.product-wrapper img,
+.thumbnail img {
+  transition: transform var(--transition-slow);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.product-item:hover img,
+.product-wrapper:hover img,
+.thumbnail:hover img {
+  transform: scale(1.05);
+}
+
+.product-title,
+.product-name {
+  font-family: 'Playfair Display', serif !important;
   font-weight: 600;
+  color: var(--color-ink);
+  margin: 1rem 0 0.5rem;
+  font-size: 1.25rem;
 }
 
-.price--on-sale .price-item--regular {
+.product-price {
+  font-weight: 600;
+  color: var(--color-primary-600);
+  font-size: 1.125rem;
+}
+
+.was_price {
   color: var(--color-muted);
+  text-decoration: line-through;
+  margin-left: 0.5rem;
 }
 
-/* Inputs */
-.field__input,
-.select__select,
-.textarea {
-  border-radius: 9999px !important; /* rounded-full */
-  border: 1px solid var(--color-primary-200) !important;
-  padding: 0.75rem 1.5rem;
-  min-height: 48px;
-  transition: all 0.3s ease;
+/* ========================================
+   HOMEPAGE SLIDESHOW - Modern Hero
+   ======================================== */
+#homepage_slider,
+.flexslider {
+  border-radius: 0 !important;
+  overflow: hidden;
+  box-shadow: var(--shadow-deep);
 }
 
-.field__input:focus,
-.select__select:focus,
-.textarea:focus {
+#homepage_slider .slides li {
+  position: relative;
+}
+
+#homepage_slider .slides li img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.flex-caption {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 3rem 2rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lift);
+  margin: 2rem;
+}
+
+.flex-caption .headline {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flex-caption .subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  margin-bottom: 1.5rem;
+  color: var(--color-earth-700);
+  line-height: 1.6;
+}
+
+/* ========================================
+   PRODUCT PAGE - Modern Layout
+   ======================================== */
+.product_section,
+.section.product_section {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  margin: 2rem 0;
+}
+
+.product_name {
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 1rem;
+}
+
+.modal_price {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary-600);
+  margin: 1.5rem 0;
+}
+
+.current_price {
+  color: var(--color-primary-600);
+}
+
+/* ========================================
+   FORMS - Modern Input Design
+   ======================================== */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+  border: 2px solid var(--color-earth-200) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 0.875rem 1.25rem;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  background: white;
+  color: var(--color-ink);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
   outline: none;
   border-color: var(--color-primary-500) !important;
   box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
 }
 
-/* Badges */
-.badge {
-  border-radius: 9999px !important;
-  background-color: var(--color-primary-100);
-  color: var(--color-primary-700);
-  font-weight: 500;
-  padding: 0.25rem 0.75rem;
+/* ========================================
+   LINKS - Smooth Transitions
+   ======================================== */
+a {
+  color: var(--color-primary-500);
+  transition: all var(--transition-fast);
+  text-decoration: none;
 }
 
-/* Sections */
-.section {
-  padding: 4rem 0;
+a:hover {
+  color: var(--color-primary-600);
+  text-decoration: underline;
 }
 
-@media screen and (min-width: 750px) {
-  .section {
-    padding: 6rem 0;
-  }
-}
-
-/* Container */
-.page-width {
+/* ========================================
+   CONTAINER - Modern Spacing
+   ======================================== */
+.container,
+.container.main {
   max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-/* Footer */
-.footer {
-  background-color: var(--color-earth-900) !important;
-  color: var(--color-linen) !important;
-}
-
-.footer a {
-  color: var(--color-linen);
-}
-
-.footer a:hover {
-  color: var(--color-accent-300);
-}
-
-/* Product Page Modern Layout */
-.product {
-  gap: 2rem;
-}
-
-.product__media-wrapper {
-  position: relative;
-}
-
-.product__info-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.product__title h1,
-.product__title h2 {
-  font-family: 'Playfair Display', serif !important;
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: var(--color-ink);
-  margin-bottom: 1rem;
-}
-
-.product__text {
-  color: var(--color-muted);
-  line-height: 1.7;
-  font-size: 1rem;
-}
-
-/* Product Form Styling */
-.product-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.product-form__input {
-  margin-bottom: 0;
-}
-
-/* Variant Picker - Modern Buttons */
-.product-form__input--dropdown,
-.variant-picker {
-  margin-bottom: 1.5rem;
-}
-
-/* Quantity Selector */
-.quantity {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.quantity__button {
-  width: 44px;
-  height: 44px;
-  border-radius: 0.75rem;
-  border: 1px solid var(--color-primary-200);
+/* ========================================
+   CARDS & BOXES - Modern Shadows
+   ======================================== */
+.card,
+.box,
+.panel {
   background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(139, 69, 19, 0.1);
+  padding: 1.5rem;
+  transition: all var(--transition-base);
 }
 
-.quantity__button:hover {
-  background: var(--color-primary-50);
-  border-color: var(--color-primary-400);
-}
-
-.quantity__input {
-  width: 80px;
-  text-align: center;
-  border-radius: 0.75rem;
-  border: 1px solid var(--color-primary-200);
-  padding: 0.75rem;
-  font-weight: 500;
-  min-height: 44px;
-}
-
-/* Buy Button */
-.product-form__cart-submit {
-  width: 100%;
-  border-radius: 9999px !important;
-  background-color: var(--color-primary-500) !important;
-  color: white !important;
-  font-weight: 600;
-  padding: 1rem 2rem;
-  min-height: 48px;
-  box-shadow: var(--shadow-warm) !important;
-  transition: all 0.3s ease;
-  border: none;
-  font-size: 1rem;
-}
-
-.product-form__cart-submit:hover {
-  background-color: var(--color-primary-600) !important;
-  box-shadow: var(--shadow-lift) !important;
+.card:hover,
+.box:hover,
+.panel:hover {
+  box-shadow: var(--shadow-warm);
   transform: translateY(-2px);
 }
 
-/* Product Media Gallery */
-.product__media {
-  border-radius: 1.5rem;
-  overflow: hidden;
-  box-shadow: var(--shadow-warm);
+/* ========================================
+   FOOTER - Modern Design
+   ======================================== */
+.footer,
+#footer {
+  background: linear-gradient(180deg, var(--color-earth-100), var(--color-earth-200)) !important;
+  border-top: 1px solid var(--color-earth-300);
+  padding: 3rem 0 1.5rem;
+  margin-top: 4rem;
 }
 
-.product__media img {
-  border-radius: 1.5rem;
+.footer a,
+#footer a {
+  color: var(--color-earth-700);
+  transition: color var(--transition-fast);
 }
 
-/* Product Description */
-.product__description {
-  color: var(--color-muted);
-  line-height: 1.7;
-  font-size: 1rem;
-}
-
-/* Nutritional Info Positioning */
-.product__nutritional {
-  margin-top: 2rem;
-}
-
-@media screen and (min-width: 990px) {
-  .product__nutritional-mobile {
-    display: block !important;
-    margin-top: 2rem;
-  }
-  
-  .product__info-wrapper .product__nutritional {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 989px) {
-  .product__nutritional-mobile {
-    display: none !important;
-  }
-  
-  .product__info-wrapper .product__nutritional {
-    display: block;
-  }
-}
-
-/* Mobile optimizations */
-@media screen and (max-width: 749px) {
-  .button,
-  .shopify-challenge__button,
-  .customer button {
-    min-height: 44px;
-    padding: 0.75rem 1.5rem;
-  }
-  
-  .card {
-    border-radius: 1rem;
-  }
-  
-  .product__title h1,
-  .product__title h2 {
-    font-size: 1.75rem;
-  }
-  
-  .product {
-    gap: 1.5rem;
-  }
-}
-
-/* Smooth transitions */
-* {
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-/* Blog Modern Styling */
-.main-blog {
-  padding: 4rem 0;
-}
-
-.main-blog .title--primary {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  font-weight: 600;
-  color: var(--color-ink);
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.blog-articles {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.blog-articles__article {
-  background: white;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  box-shadow: var(--shadow-warm);
-  border: 1px solid var(--color-primary-200);
-  transition: all 0.3s ease;
-}
-
-.blog-articles__article:hover {
-  box-shadow: var(--shadow-lift);
-  transform: translateY(-4px);
-}
-
-.article-card__image-wrapper {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-}
-
-.article-card__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.blog-articles__article:hover .article-card__image {
-  transform: scale(1.05);
-}
-
-.article-card__content {
-  padding: 1.5rem;
-}
-
-.article-card__title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-ink);
-  margin-bottom: 0.75rem;
-  line-height: 1.3;
-}
-
-.article-card__title a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.article-card__title a:hover {
+.footer a:hover,
+#footer a:hover {
   color: var(--color-primary-600);
 }
 
-.article-card__excerpt {
-  color: var(--color-muted);
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.article-card__meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 0.875rem;
-  color: var(--color-muted);
-  margin-bottom: 1rem;
-}
-
-.article-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.article-card__tag {
-  background-color: var(--color-primary-100);
-  color: var(--color-primary-700);
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-@media screen and (max-width: 749px) {
-  .main-blog .title--primary {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+/* ========================================
+   RESPONSIVE - Mobile First
+   ======================================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
   }
   
-  .blog-articles {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .flex-caption {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+  
+  .product_section {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .button,
+  .action_button {
+    padding: 0.875rem 2rem;
+    width: 100%;
+    max-width: 100%;
   }
 }
 
+/* ========================================
+   ANIMATIONS - Smooth Transitions
+   ======================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.p-4 {
+  padding: 2rem;
+}
+
+/* ========================================
+   SEARCH - Modern Search Bar
+   ======================================== */
+.search-form input[type="search"],
+.search-form input[type="text"] {
+  border-radius: var(--radius-full);
+  padding: 0.875rem 1.5rem;
+  border: 2px solid var(--color-earth-200);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* ========================================
+   COLLECTION PAGE - Modern Grid
+   ======================================== */
+.collection-products,
+.product-loop {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/* ========================================
+   CART - Modern Cart Design
+   ======================================== */
+.cart-item,
+.cart-row {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+*:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+  .button,
+  .action_button,
+  #header,
+  .footer {
+    display: none;
+  }
+}
